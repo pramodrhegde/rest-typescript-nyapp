@@ -1,7 +1,11 @@
 import React from 'react';
+// import BooksList from './BooksList';
+import MoviesReviewList from './MoviesReviewList';
 
 const App = () => {
-    return <div>Hello world!!</div>;
+    return <div>
+        <MoviesReviewList/>
+    </div>;
 };
 
 export default App;
