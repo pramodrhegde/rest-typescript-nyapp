@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {Months} from '../constants/Constants';
+import {IMoviewReviewType} from '../types/Types';
 
+// interface IGetDateString {
+//     (str: string): string
+// }
 
-const MovieReviewCard = (props) => {
+// const getDateString: IGetDateString = (str) => {
+//     const temp: string[] = str.split('-');
+
+//     return `${Months[temp[1]]} ${temp[0]}`;
+// }
+
+const MovieReviewCard = (props: IMoviewReviewType): ReactElement => {
     const {display_title, byline, critics_pick, headline, link, multimedia, opening_date, publication_date, summary_short} = props;
 
     const opening = opening_date.split('-');

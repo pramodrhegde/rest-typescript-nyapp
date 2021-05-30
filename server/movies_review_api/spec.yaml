@@ -3,6 +3,8 @@ basePath: /svc/movies/v2
 host: api.nytimes.com
 schemes:
   - https
+servers:
+  - url: https://api.nytimes.com/svc/movies/v2
 info:
   version: 2.0.0
   title: Movie Reviews API
@@ -53,6 +55,7 @@ paths:
       summary: Get movie critics name, bio and image.
       description: |
         Get movie critics. You can either specify the reviewer name or use "all", "full-time", or "part-time".
+      operationId: "GET_reviews-format"
       tags:
         - Movies
       parameters:
@@ -88,6 +91,7 @@ paths:
         Get movie reviews.  Can filter to only return Critics' Picks.
         Supports ordering results by-publication-date or by-opening-date.
         Use offset to paginate thru results, 20 at a time.
+      operationId: "GET_reviews-type-format"
       tags:
         - Movies
       parameters:
@@ -144,6 +148,7 @@ paths:
       summary: Search for movie reviews.
       description: |
         Search for movie reviews.  Supports filtering by Critics' Pick.
+      operationId: "GET_reviews-search-format"
       parameters:
         - name: critics-pick
           in: query
@@ -300,12 +305,15 @@ definitions:
         description: Short summary about the review.
       publication_date:
         type: string
+        nullable: true
         description: Review publication date.
       opening_date:
         type: string
+        nullable: true
         description: Movie U.S. opening date.
       date_updated:
         type: string
+        nullable: true
         description: Last modified date of the review.
       link:
         $ref: '#/definitions/Link'

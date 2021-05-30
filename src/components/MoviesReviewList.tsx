@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import {fetchMovieReviews, ReviewTypeEnum, OrderTypeEnum} from '../server/movieReviewsService';
 import MovieReviewCard from './MovieReviewCard';
+import {IMoviewReviewType} from '../types/Types';
 
-const MoviesReviewList = (props) => {
+const MoviesReviewList = (): ReactElement => {
     const [reviewList, setReviewsList] = useState([]);
     const [reviewsType, setReviewsType] = useState<ReviewTypeEnum>(ReviewTypeEnum.ALL);
     const [reviewsOrderType, setReviewsOrderType] = useState<OrderTypeEnum>(OrderTypeEnum.BY_OPENING_TYPE);
@@ -39,7 +40,7 @@ const MoviesReviewList = (props) => {
             <option value={OrderTypeEnum.BY_PUBLICATION_DATE}>{OrderTypeEnum.BY_PUBLICATION_DATE}</option>
         </select>
         {
-            reviewList.map(review => <MovieReviewCard key={`${review.date_updated}_${review.display_title}`} {...review}/>)
+            reviewList.map((review: IMoviewReviewType) => <MovieReviewCard key={`${review.date_updated}_${review.display_title}`} {...review}/>)
         }
     </div>;
 };
