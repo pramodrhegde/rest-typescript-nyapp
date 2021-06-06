@@ -1,4 +1,8 @@
-export const Months = {
+interface IMonths {
+    [key: string]: string
+}
+
+export const Months: IMonths = {
     '01': 'Jan',
     '02': 'Feb',
     '03': 'Mar',

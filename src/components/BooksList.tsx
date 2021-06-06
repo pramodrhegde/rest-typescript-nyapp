@@ -7,7 +7,7 @@ interface IBooksState{
     list: []
 };
 
-const BooksList = (props) => {
+const BooksList = () => {
 
     const [booksList, setBooksList] = useState([]);
     const [currentList, setCurrentList] = useState("");
@@ -44,7 +44,7 @@ const BooksList = (props) => {
         }
     }, [currentList]);
 
-    const handleListChange = (e) => {
+    const handleListChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         // console.log(e.target.value);
         setCurrentList(e.target.value);
     }
@@ -53,7 +53,7 @@ const BooksList = (props) => {
         <p>Newyork bet sellers list</p>
         <select name="best-seller-list" onChange={handleListChange}>
             {
-                booksList.map((list, i) => <option value={list.list_name_encoded}>{list.display_name}</option>)
+                booksList.map((list) => <option value={list.list_name_encoded}>{list.display_name}</option>)
             }
         </select>
         {

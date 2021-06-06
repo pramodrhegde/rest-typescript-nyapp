@@ -305,7 +305,7 @@ definitions:
         description: Short summary about the review.
       publication_date:
         type: string
-        nullable: true
+        nullable: false
         description: Review publication date.
       opening_date:
         type: string

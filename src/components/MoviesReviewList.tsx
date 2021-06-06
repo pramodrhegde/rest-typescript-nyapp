@@ -2,18 +2,19 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import {fetchMovieReviews, ReviewTypeEnum, OrderTypeEnum} from '../server/movieReviewsService';
 import MovieReviewCard from './MovieReviewCard';
 import {IMoviewReviewType} from '../types/Types';
+import {Review} from '../server/server';
 
 const MoviesReviewList = (): ReactElement => {
-    const [reviewList, setReviewsList] = useState([]);
+    const [reviewList, setReviewsList] = useState<Review []>([]);
     const [reviewsType, setReviewsType] = useState<ReviewTypeEnum>(ReviewTypeEnum.ALL);
     const [reviewsOrderType, setReviewsOrderType] = useState<OrderTypeEnum>(OrderTypeEnum.BY_OPENING_TYPE);
 
-    const handleReviewTypeChange = (e) => {
-        setReviewsType(e.target.value);
+    const handleReviewTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setReviewsType(e.target.value as ReviewTypeEnum);
     };
 
-    const hanldeReviewOrderType = (e) => {
-        setReviewsOrderType(e.target.value);
+    const hanldeReviewOrderType = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setReviewsOrderType(e.target.value as OrderTypeEnum);
     };
 
     useEffect(() => {
@@ -40,7 +41,7 @@ const MoviesReviewList = (): ReactElement => {
             <option value={OrderTypeEnum.BY_PUBLICATION_DATE}>{OrderTypeEnum.BY_PUBLICATION_DATE}</option>
         </select>
         {
-            reviewList.map((review: IMoviewReviewType) => <MovieReviewCard key={`${review.date_updated}_${review.display_title}`} {...review}/>)
+            reviewList.map((review: Review) => <MovieReviewCard key={`${review.date_updated}_${review.display_title}`} {...review}/>)
         }
     </div>;
 };
